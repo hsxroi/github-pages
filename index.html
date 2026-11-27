@@ -27,6 +27,7 @@
   --c-stay: #23478c;
   --c-bar: #6b46c1;
   --c-rest: #8fa1a8;
+  --c-car: #d95d39;
   --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
@@ -55,6 +56,7 @@
     --c-stay: #92aef0;
     --c-bar: #bb97f2;
     --c-rest: #677d85;
+    --c-car: #f07b59;
   }
 }
 
@@ -79,6 +81,7 @@
   --c-stay: #92aef0;
   --c-bar: #bb97f2;
   --c-rest: #677d85;
+    --c-car: #f07b59;
 }
 
 * {
@@ -798,6 +801,18 @@ ul.rec li b {
 .vwrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center;transform-origin:center center;will-change:transform}
 .vimg{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;user-select:none;-webkit-user-drag:none;pointer-events:none}
 .vhint{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));text-align:center;font-size:11.5px;color:#ffffffb8;z-index:3;padding:0 16px;pointer-events:none}
+
+.item.pickup .time{color:var(--c-car)}
+.item.pickup .card{border-color:var(--c-car)}
+.item.pickup.now .card{background:color-mix(in srgb,var(--c-car) 12%,var(--surface));border:2px solid var(--c-car);box-shadow:0 0 0 4px color-mix(in srgb,var(--c-car) 22%,transparent);animation:pk 1.8s ease-in-out infinite}
+@keyframes pk{50%{box-shadow:0 0 0 9px color-mix(in srgb,var(--c-car) 6%,transparent)}}
+.pcall{display:none;margin-top:10px;padding:11px 12px;border-radius:10px;background:var(--c-car);color:#fff;font-size:13px;line-height:1.55}
+.item.now .pcall{display:block}
+.pcall b{display:block;margin-bottom:4px;font-size:13.5px}.pcall ol{margin:0;padding-left:18px}.pcall small{display:block;margin-top:6px;opacity:.92}
+.pick{margin:14px 0 6px;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--c-car) 10%,var(--surface));border-left:4px solid var(--c-car);font-size:13.5px;line-height:1.65}
+.pick b.t{display:block;font-size:14px;margin-bottom:4px;color:var(--c-car)}
+.pick ul{margin:0;padding-left:18px}.pick li{margin-bottom:4px}
+.pick small{display:block;margin-top:6px;color:var(--sub)}
 </style>
 </head>
 <body>
@@ -826,13 +841,6 @@ ul.rec li b {
       <span class="mi-left">
         <svg class="svg-ic" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
         지유 밥 정보
-      </span>
-      <svg class="svg-ic" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <button class="mi" data-open="car">
-      <span class="mi-left">
-        <svg class="svg-ic" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
-        렌트카 정보
       </span>
       <svg class="svg-ic" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
@@ -897,6 +905,12 @@ ul.rec li b {
       <svg class="svg-ic" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <h2>렌트카 정보</h2>
+    <div class="pick"><b class="t">픽업 안내</b><ul>
+      <li>항공편 도착 시간 1시간 후에 회사 차량으로 픽업 장소로 이동해 드립니다.</li>
+      <li>예약확인메일에 발송된 렌트카 업체의 카카오톡 프로필을 친구추가하시고, 입국심사 후 업체로 연락해주세요. (한국어로 보내도 됩니다.)</li>
+      <li>국내선 터미널 3층 3번 출구 근처에서 기다리세요.</li>
+      <li>3층 일본항공(JAL) 카운터 근처에 3번 출구가 있습니다.</li></ul>
+      <small>※ 현재 나하공항은 국내 건물과 국제 건물이 통합되어 있습니다.</small></div>
     <table>
       <tr><td>업체</td><td>BROTHER’S 브라더스 렌터카 (나하 공항점)</td></tr>
       <tr><td>차종</td><td>미니밴 7/8인승 (세레나·스텝왜건·복시 중 랜덤)</td></tr>
@@ -910,7 +924,7 @@ ul.rec li b {
       <tr><td>총액</td><td><b>22,200엔</b> (예약금 결제 완료 · 현지 잔액 0엔)</td></tr>
       <tr><td>포함</td><td>밤 9시까지 영업, 영업시간 외 대응 가능, 카시트 3대까지 무료</td></tr>
     </table>
-    <div class="note">연락처·이메일은 공유 시 노출되지 않도록 뺐어요. 일정표의 반납 시각(12/1 오전)과 예약상 반납 시각(17:30)이 다르니 업체에 확인해 두세요.</div>
+    <div class="note">연락처·이메일은 공유 시 노출되지 않도록 뺐어요. 예약서상 출발·반납은 17:30이라 일정표 시각(출발 11:00 안팎, 반납 12/1 오전)과 달라요. 업체에 확인해 두세요.</div>
   </div>
 </div>
 
@@ -941,13 +955,14 @@ var SVG_ICONS={
   baby:'<svg class="svg-ic" viewBox="0 0 24 24"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></svg>'
 };
 
-var KIND={move:'이동',air:'항공',food:'식사',sight:'관광',shop:'쇼핑',stay:'숙소',bar:'바',rest:'휴식'};
+var KIND={move:'이동',air:'항공',food:'식사',sight:'관광',shop:'쇼핑',stay:'숙소',bar:'바',car:'렌트카',rest:'휴식'};
 var HOTEL_ORION='オリオンホテル モトブリゾート&スパ',ORION_TEL='0980-51-7300',NAHA='那覇空港 国際線ターミナル',ICN='인천국제공항 제2여객터미널';
 var DAYS=[
 {d:'토',date:'11/28',name:'아메리칸빌리지',ymd:'2026-11-28',stay:{n:'Lequ 차탄',q:'LeQu Okinawa Chatan Spa & Resort',i:'조식 O · 체크인 14시 / 체크아웃 11시'},items:[
 ['05:00','집 출발','인천공항 제2터미널 예약주차장에 주차',ICN,{type:'move',bus:1}],
 ['08:30','KE2147 인천 → 오키나와','11:00 나하공항 도착',ICN,{type:'air',end:'11:00',flight:'KE2147',term:['plane','인천 제2터미널 출발','T2']}],
-['11:30','돈카츠타로 오로쿠점','입국심사·렌트카 수령 뒤 점심','とんかつ太郎 小禄店',{type:'food',ph:'tonka'}],
+['11:00','렌터카 찾기 (Brother’s 렌터카)','입국심사 후 업체로 연락해서 픽업하기','那覇空港 国内線ターミナル',{type:'car',pickup:1,chip:'입국심사 후 카톡 연락'}],
+['12:00','돈카츠타로 오로쿠점','렌트카 수령 뒤 점심','とんかつ太郎 小禄店',{type:'food',ph:'tonka'}],
 ['13:00','오키나와 어린이나라','아기와 동물·놀이터 즐기기 (이동 40분)','沖縄こどもの国',{type:'sight',ph:'child'}],
 ['15:00','이온몰 라이카무','산리오·GU·GAP·토이저러스 (이동 10분)','イオンモール沖縄ライカム',{type:'shop',baby:'수유실·기저귀 4층'}],
 ['17:00','Lequ 차탄 체크인','저녁 8시 불꽃놀이, 전용 주차장 이용','LeQu Okinawa Chatan Spa & Resort',{type:'stay'}],
@@ -1028,11 +1043,12 @@ function loadWx(){
 function card(it,di,ii){
  var D=DAYS[di],o=it[4]||{},q=it[3],gray=o.type==='bar',ty=o.rest?'rest':(gray?'rest':o.type),en=endOf(D,ii),du=en?dur(it[0],en):'';
  var cls='card'+(o.ph?' hasph':'')+(gray?' rest':'')+(o.rest?'':' go');
- var h='<div class="item" style="--c:var(--c-'+ty+')" data-i="'+ii+'"><div class="time">'+it[0]+'<small>'+(en?'~ '+en:'~')+'</small>'+(du&&!gray?'<small>'+du+'</small>':'')+'</div><div class="'+cls+'"'+(q?' data-q="'+E(q)+'"':'')+'>';
- var showFind=q&&!(ty==='move'||ty==='air'||ty==='stay'||it[1].indexOf('공항')>-1),showNavi=q&&!o.nonavi&&ty!=='air'&&!gray;
- h+='<div class="body"><div class="row"><div class="txt">'+(o.rest?'':'<span class="kind">'+KIND[ty]+'</span>')+'<h3>'+it[1]+'<span class="badge">지금</span></h3><p class="d">'+it[2]+'</p>'+(o.baby?'<span class="tag">'+SVG_ICONS.baby+'<span>'+o.baby+'</span></span>':'');
+ var h='<div class="item'+(o.pickup?' pickup':'')+'" style="--c:var(--c-'+ty+')" data-i="'+ii+'"><div class="time">'+it[0]+'<small>'+(en?'~ '+en:'~')+'</small>'+(du&&!gray?'<small>'+du+'</small>':'')+'</div><div class="'+cls+'"'+(q?' data-q="'+E(q)+'"':'')+'>';
+ var showFind=q&&!(ty==='move'||ty==='air'||ty==='stay'||ty==='car'||it[1].indexOf('공항')>-1),showNavi=q&&!o.nonavi&&ty!=='air'&&!gray;
+ h+='<div class="body"><div class="row"><div class="txt">'+(o.rest?'':'<span class="kind">'+KIND[ty]+'</span>')+'<h3>'+it[1]+'<span class="badge">지금</span></h3><p class="d">'+it[2]+'</p>'+(o.baby?'<span class="tag">'+SVG_ICONS.baby+'<span>'+o.baby+'</span></span>':'')+(o.chip?'<span class="tag">'+o.chip+'</span>':'');
  if(showFind){var sq=o.type==='bar'?it[1]:it[1]+' 오키나와';
   h+='<div class="find"><a class="n" href="https://m.search.naver.com/search.naver?query='+E(sq)+'" target="_blank" rel="noopener">네이버</a><a class="g" href="https://www.google.com/search?q='+E(sq)+'" target="_blank" rel="noopener">구글</a></div>'}
+ if(o.pickup)h+='<div class="acts"><button class="act" data-open="car">자세히 보기</button></div><div class="pcall"><b>지금 할 일</b><ol><li>입국심사를 마치면 업체 카카오톡으로 연락 (한국어 가능)</li><li>국내선 터미널 3층 3번 출구 근처에서 대기</li><li>3번 출구는 3층 JAL 카운터 근처</li></ol><small>항공편 도착 1시간 후 회사 차량이 픽업 장소로 이동해 드려요. 나하공항은 국내·국제 건물이 통합되어 있어요.</small></div>';
  if(o.flight)h+='<div class="acts"><a class="act" target="_blank" rel="noopener" href="https://www.google.com/search?q='+E(o.flight+' 운항 현황 게이트')+'">'+o.flight+' 게이트·운항 조회 ›</a></div>';
  if(o.bus)h+='<div class="acts"><button class="act" data-open="bus">공항버스 시간표</button><button class="act" data-open="park" data-k="p1">주차예약: 희승</button><button class="act" data-open="park" data-k="p2">주차예약: 엄마</button></div><div class="busnow" id="busnow"></div>';
  h+='</div>'+(o.ph?'<div class="th" style="background-image:url('+PH[o.ph]+')"></div>':'')+'</div>';
@@ -1086,7 +1102,8 @@ $('tabs').onclick=function(e){var b=e.target.closest('.tab');if(b){cur=+b.datase
 function toMap(q){location.href='https://www.google.com/maps/search/?api=1&query='+q}
 document.addEventListener('click',function(e){
  if(e.target.closest('#wxt')){wxOpen=!wxOpen;render();return}
- var ab=e.target.closest('.acts [data-open]');if(ab){vOpen(ab.dataset.open);if(ab.dataset.k){var tb=document.querySelector('.vtab[data-k="'+ab.dataset.k+'"]');if(tb)tb.click()}return}
+ var ab=e.target.closest('.acts [data-open]');if(ab&&ab.dataset.open==='car'){$('car').classList.add('on');return}
+ var ab2=ab;if(ab){vOpen(ab.dataset.open);if(ab.dataset.k){var tb=document.querySelector('.vtab[data-k="'+ab.dataset.k+'"]');if(tb)tb.click()}return}
  if(e.target.closest('a'))return;
  var c=e.target.closest('.card.go,.stay[data-q]');if(c&&c.dataset.q&&!e.target.closest('.sheet')){toMap(c.dataset.q);return}
  var o=e.target.closest('[data-open]');
